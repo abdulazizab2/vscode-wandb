@@ -1,6 +1,6 @@
-# wandb README
+# vscode-wandb README
 
-This is the README for your extension "wandb". After writing up a brief description, we recommend including the following sections.
+This is the README for your extension "vscode-wandb". After writing up a brief description, we recommend including the following sections.
 
 ## Features
 
