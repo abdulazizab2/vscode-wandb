@@ -31,6 +31,9 @@
     "lint": "eslint src --ext ts",
     "test": "node ./out/test/runTest.js"
   },
+  "pre-commit": [
+    "prettier"
+  ],
   "devDependencies": {
     "@types/glob": "^8.1.0",
     "@types/mocha": "^10.0.1",
@@ -42,9 +45,9 @@
     "eslint": "^8.41.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.0.0",
-    "prettier": "^2.7.1",
     "glob": "^8.1.0",
     "mocha": "^10.2.0",
+    "prettier": "^2.7.1",
     "ts-loader": "^9.4.3",
     "typescript": "<5.1.0",
     "webpack": "^5.85.0",
@@ -52,6 +55,7 @@
   },
   "dependencies": {
     "@wandb/sdk": "^0.5.1",
-    "axios": "^1.4.0"
+    "axios": "^1.4.0",
+    "pre-commit": "^1.2.2"
   }
 }
