@@ -17,8 +17,25 @@
         "command": "vscode-wandb.registerAPIKey",
         "title": "Register WandB API Key"
       }
-    ]
+    ],
+    "viewsContainers": {
+      "activitybar": [
+          {
+              "id": "wandbExtension",
+              "title": "WandB",
+              "icon": "assets/fire-icon.svg" 
+          }
+      ]
   },
+  "views": {
+      "wandbExtension": [
+          {
+              "id": "projectsView",
+              "name": "Projects"
+          }
+      ]
+  }
+},
   "scripts": {
     "vscode:prepublish": "npm run package",
     "compile": "webpack",
