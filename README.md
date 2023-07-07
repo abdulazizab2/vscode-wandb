@@ -1,17 +1,19 @@
-# vscode-wandb README
+# WandB for Visual Studio Code
 
-This is the README for your extension "vscode-wandb". After writing up a brief description, we recommend including the following sections.
+WandB extension for vscode. The extension is under development. You can try it out and see the current state:
+
+1. clone the repo
+2. npm install
+3. configure the debug options
+![title](./assets/debug.png)
+4. Press F5
+5. vscode will launch a remote window with the extension shown in the sidebar. The extension logo is :fire:
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+In Progress:
 
-For example if there is an image subfolder under your extension project workspace:
-
-\!\[feature X\]\(images/feature-x.png\)
-
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
-
+- Provide a gif demo
 ## Requirements
 
 If you have any requirements or dependencies, add a section describing those and how to install and configure them.
