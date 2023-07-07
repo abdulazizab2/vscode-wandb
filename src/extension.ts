@@ -1,10 +1,11 @@
 import * as vscode from 'vscode';
-import * as wandb from '@wandb/sdk';
+import wandb from '@wandb/sdk';
+import { InitOptions } from '@wandb/sdk/dist/sdk/wandb_init';
 
 export async function activate(context: vscode.ExtensionContext) {
-  await context.globalState.update('apiKey', undefined); // workaround for resetting API key value during extension activation
+  await context.globalState.update('WANDB_API_KEY', undefined); // workaround for resetting API key value during extension activation
   // Check if API key is in global state
-  let apiKey = context.globalState.get<string>('apiKey');
+  let apiKey = context.globalState.get<string>('WANDB_API_KEY');
 
   // If API key doesn't exist or is invalid, prompt the user for it
   while (!apiKey || !(await isValidApiKey(apiKey))) {
@@ -12,6 +13,7 @@ export async function activate(context: vscode.ExtensionContext) {
       placeHolder: 'Please enter your WandB API key',
       ignoreFocusOut: true, // Keeps the input box open when losing focus
     });
+    process.env['WANDB_API_KEY'] = apiKey;
 
     if (apiKey && (await isValidApiKey(apiKey))) {
       // Store API key in global state
@@ -21,7 +23,11 @@ export async function activate(context: vscode.ExtensionContext) {
       );
 
       try {
-        // get all user projects
+        vscode.window.showInformationMessage('API Key Validated'); //  TODO: remove after getting projects
+        //
+        // TODO: get all user projects. This is not straightforward as wandb-js doesnt support this natively as of date
+        // either use python API with call via HTTP requests (FastAPI as a wrapper)
+        // or scrape wandb after successful API authentifcation
       } finally {
         fetchingMessage.dispose(); // Hide the status bar message
       }
@@ -32,8 +38,13 @@ export async function activate(context: vscode.ExtensionContext) {
 }
 
 async function isValidApiKey(apiKey: string): Promise<boolean> {
-  // TODO: replace with your actual validation logic
-  // This could involve making a request to the API and checking if it succeeds, or calling a method from the SDK
-
-  return true;
+  const initOptions: InitOptions = {
+    project: 'vscode-wandb-connection',
+  };
+  try {
+    await wandb.init(initOptions);
+    return true;
+  } catch {
+    return false;
+  }
 }
