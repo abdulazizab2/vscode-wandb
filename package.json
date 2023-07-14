@@ -3,6 +3,10 @@
   "displayName": "WandB",
   "description": "Seamlessly view your WandB experiments on vscode",
   "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/abdulazizab2/vscode-wandb"
+  },
   "engines": {
     "vscode": "^1.79.0"
   },
